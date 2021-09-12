@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static%}
+
+{% block title%}Banco{% endblock %}
+
+{% block content %}
+    <!-- Pricing section-->
+    <section class="bg-light py-5 border-bottom">
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder">Banco</h2>
+                <p class="lead mb-0">Acesse os arquivos do Banco de Leishmania</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Data</th>
+                                        <th>Arquivo</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Data</th>
+                                        <th>Arquivo</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for file in files %}
+                                        <tr>
+                                            <td>{{ file.name }}</td>
+                                            <td>{{ file.created_at }}</td>
+                                            <td>
+                                                <a href="{% get_media_prefix %}{{ file.file }}">Acessar</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
